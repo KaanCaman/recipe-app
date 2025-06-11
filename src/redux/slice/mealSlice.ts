@@ -39,6 +39,17 @@ export const fetchMealsByFirstLetter = createAsyncThunk<any[], string>(
   },
 );
 
+// Yeni eklenen search thunk
+export const fetchMealsByName = createAsyncThunk<any[], string>(
+  'meals/fetchMealsByName',
+  async query => {
+    const response = await axios.get(
+      `${BASE_URL}/search.php?s=${encodeURIComponent(query)}`,
+    );
+    return response.data.meals || [];
+  },
+);
+
 interface MealsState {
   categories: string[];
   areas: string[];
@@ -118,6 +129,21 @@ export const mealsSlice = createSlice({
         },
       )
       .addCase(fetchMealsByFirstLetter.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message || null;
+      })
+      // Yeni eklenen search cases
+      .addCase(fetchMealsByName.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(
+        fetchMealsByName.fulfilled,
+        (state, action: PayloadAction<any[]>) => {
+          state.status = 'succeeded';
+          state.meals = action.payload;
+        },
+      )
+      .addCase(fetchMealsByName.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message || null;
       });

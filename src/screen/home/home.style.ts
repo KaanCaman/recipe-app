@@ -19,13 +19,14 @@ export const homeStyles = StyleSheet.create({
   letterButton: {
     ...utilityStyles.m1,
     ...utilityStyles.roundedLg,
-    ...utilityStyles.p2,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
   },
 
   letterText: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'center',
-    fontWeight: '600',
+    fontWeight: '500',
   },
 
   // Meals List Styles
