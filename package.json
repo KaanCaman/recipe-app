@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^7.3.14",
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.9.0",
+    "firebase": "^11.9.1",
     "lucide-react-native": "^0.513.0",
     "react": "19.0.0",
     "react-native": "0.79.3",

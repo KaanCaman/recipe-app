@@ -39,7 +39,6 @@ export const fetchMealsByFirstLetter = createAsyncThunk<any[], string>(
   },
 );
 
-// Yeni eklenen search thunk
 export const fetchMealsByName = createAsyncThunk<any[], string>(
   'meals/fetchMealsByName',
   async query => {
